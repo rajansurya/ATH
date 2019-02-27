@@ -14,6 +14,7 @@ class MainActivity : BaseActivity() ,View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         craeteView()
     }
 
