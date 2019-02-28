@@ -1,5 +1,6 @@
 package com.dagger.inject
 
+import com.activity.module.LoginViewModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import fieldx.mobile.com.atiyaherb.BaseActivity
@@ -10,6 +11,6 @@ abstract class ATHActivityModule {
 
     @ContributesAndroidInjector
     abstract fun bindBaseView(): BaseActivity
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = arrayOf(LoginViewModule::class))
     abstract fun bindMainView():MainActivity
 }
