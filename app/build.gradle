@@ -21,21 +21,21 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        debug{
+        debug {
             buildConfigField "String", "BASE_URL", '"http://google.com"'
         }
     }
-    dataBinding{
+    dataBinding {
         enabled = true
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$rootProject.androidDependencies"
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-
+    implementation "com.android.support:recyclerview-v7:$rootProject.androidDependencies"
     // dependency injection
     implementation "com.google.dagger:dagger-android:$rootProject.dagger2Version"
     implementation "com.google.dagger:dagger-android-support:$rootProject.dagger2Version"
@@ -45,12 +45,6 @@ dependencies {
 
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
-
-//    implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
-//    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
-//    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.dagger2Version"
-//    implementation "com.google.dagger:dagger-android-support:$rootProject.dagger2Version"
-
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
