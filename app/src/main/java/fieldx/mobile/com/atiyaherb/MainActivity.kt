@@ -33,8 +33,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         list.add(InfoData("I am a?", R.drawable.age_drawable_left))
         list.add(InfoData("Age", R.drawable.calender_drawable_left))
         list.add(InfoData("Height", R.drawable.height_drawable_left))
-
-
         list.forEachIndexed { index, s -> flowdistrict.addView(buildLabel(s.name, index.toString(), s.drwable)) }
 
     }
@@ -59,7 +57,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             textviewClicked?.let {
                 textviewClicked?.isSelected = false
             }
-            println(textView.tag)
+            //println(textView.tag)
             textView.isSelected = true
 
             textviewClicked = textView
