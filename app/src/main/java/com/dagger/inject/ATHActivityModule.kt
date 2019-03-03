@@ -4,6 +4,7 @@ import com.activity.module.LoginViewModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import fieldx.mobile.com.atiyaherb.BaseActivity
+import fieldx.mobile.com.atiyaherb.DiseasesView
 import fieldx.mobile.com.atiyaherb.MainActivity
 
 @Module
@@ -13,4 +14,6 @@ abstract class ATHActivityModule {
     abstract fun bindBaseView(): BaseActivity
     @ContributesAndroidInjector(modules = arrayOf(LoginViewModule::class))
     abstract fun bindMainView():MainActivity
+    @ContributesAndroidInjector
+    abstract fun bindDiseasesView(): DiseasesView
 }

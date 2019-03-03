@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">AtiyaHerb</string>
     <string name="tellusabout">Tell us about yourself</string>
+    <string name="age_val">Swipe Left or Right to select your age</string>
+    <string name="height_val">Swipe Left or Right to select your height</string>
+    <string name="wieght_val">Swipe Left or Right to select your weight</string>
+    <string name="family_deise">Do you or your family member have significant medical condition</string>
+    <string name="family_des">TAP ON ALL APPLICABLE</string>
 </resources>

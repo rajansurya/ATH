@@ -13,17 +13,17 @@ import kotlinx.android.synthetic.main.count_view.view.*
 import android.view.LayoutInflater
 
 
-
 /**
  * Created by Rajan on 01-03-2019.
  */
-class RecyclerViewHorizontalListAdapter :RecyclerView.Adapter<RecyclerViewHorizontalListAdapter.ViewHolder>{
-    lateinit var arrayl:IntArray
-    lateinit var context:Context
-    constructor(contextl:Context,array:IntArray){
-        arrayl=array
-        context=contextl
+class RecyclerViewHorizontalListAdapter : RecyclerView.Adapter<RecyclerViewHorizontalListAdapter.ViewHolder> {
+    lateinit var arrayl: ArrayList<String>
+    lateinit var context: Context
+
+    constructor(contextl: Context) {
+        context = contextl
     }
+
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(context)
         val listItem = layoutInflater.inflate(R.layout.count_view, p0, false)
@@ -32,17 +32,22 @@ class RecyclerViewHorizontalListAdapter :RecyclerView.Adapter<RecyclerViewHorizo
     }
 
     override fun getItemCount(): Int {
-        return  arrayl.size
+        return arrayl.size
+    }
+
+    fun update(array: ArrayList<String>) {
+        arrayl = array
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-        p0.itemView.count.text=arrayl[p1].toString()
+        p0.itemView.count.text = arrayl.get(p1)
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         init {
-            itemView.count.text=""
+            itemView.count.text = ""
         }
     }
 }

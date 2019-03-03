@@ -25,96 +25,38 @@
         android:fontFamily="@font/raleway_bold"
         android:text="@string/tellusabout"
         android:textColor="@color/white"
-        android:textSize="19dp" />
+        android:textSize="30dp" />
 
-    <fieldx.mobile.com.atiyaherb.FlowLayout
-        android:id="@+id/flowdistrict"
-        android:layout_width="match_parent"
+    <HorizontalScrollView
+        android:id="@+id/parenthorizon"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_margin="5dp"
-        app:flChildSpacing="auto"
-        app:flRowSpacing="8dp" />
+        android:scrollbars="none">
 
-    <LinearLayout
-        android:id="@+id/gender_view"
+        <fieldx.mobile.com.atiyaherb.FlowLayout
+            android:id="@+id/flowdistrict"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" />
+    </HorizontalScrollView>
+
+    <include
+        android:id="@+id/age_include"
+        layout="@layout/age_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/flowdistrict"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp">
+        android:layout_below="@+id/parenthorizon"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true" />
 
-        <LinearLayout
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:background="@drawable/male_gender_strok"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="4dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/male_icon" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Male"
-                android:textColor="@color/white" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/male_gender_strok"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="4dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/female_icon" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Female"
-                android:textColor="@color/white" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <RelativeLayout
+    <include
+        android:id="@+id/gender_include"
+        layout="@layout/gender_view"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_below="@+id/gender_view"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/parenthorizon"
+        android:layout_centerHorizontal="true" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/idRecyclerViewHorizontalList"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true">
-
-            <ImageView
-                android:layout_width="3dp"
-                android:layout_height="40dp"
-                android:background="@color/white" />
-
-            <ImageView
-                android:layout_width="3dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="40dp"
-                android:background="@color/white" />
-        </LinearLayout>
-    </RelativeLayout>
 </RelativeLayout>
