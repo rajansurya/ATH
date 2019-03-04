@@ -6,16 +6,16 @@
     <string name="wieght_val">Swipe Left or Right to select your weight</string>
     <string name="family_deise">Do you or your family member have significant medical condition</string>
     <string name="family_des">TAP ON ALL APPLICABLE</string>
-    <string name="welcomehsk">Welcome to HSK</string>
+    <string name="welcomehsk">Welcome to \n HSK</string>
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="accessdoctor">Access Thousands of trusted Doctors instantly.Never wait to feel better even again.</string>
-    <string name="infosecond">Ask A Health Query For Free</string>
-    <string name="infothird">Consult A Doctor Instantly</string>
+    <string name="infosecond">Ask A \nHealth Query \nFor Free</string>
+    <string name="infothird">Consult A \nDoctor Instantly</string>
     <string name="freeconsult">Get personalized consultation over text or audio/video. No waiting.</string>
-    <string name="infofourth">Book Appointments</string>
+    <string name="infofourth">Book \nAppointments</string>
     <string name="bookdoc">Book an appointment with a doctor to consult online or to visit at the clinic.</string>
-    <string name="healthtips">Get Trusted Health Tips</string>
+    <string name="healthtips">Get Trusted \nHealth Tips</string>
     <string name="healthmsg">Receive trusted health tips from top doctors for you and your loved ones</string>
     <string name="hsk">HSK</string>
 </resources>
