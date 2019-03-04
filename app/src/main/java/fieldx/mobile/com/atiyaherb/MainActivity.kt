@@ -97,29 +97,33 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
     fun finduserinfo(tag: String) {
         when (tag) {
-            "0" -> {
+           /* "0" -> {
                 age_include.visibility = View.GONE
                 gender_include.visibility = View.VISIBLE
 
                 recycleadapter.update(agelist)
-            }
+                idRecyclerViewHorizontalList.layoutManager?.scrollToPosition(15)
+            }*/
             "1" -> {
                 age_include.visibility = View.VISIBLE
                 gender_include.visibility = View.GONE
                 textvalue.text=resources.getString(R.string.age_val)
                 recycleadapter.update(agelist)
+                idRecyclerViewHorizontalList.layoutManager?.scrollToPosition(15)
             }
             "2" -> {
                 age_include.visibility = View.VISIBLE
                 gender_include.visibility = View.GONE
                 textvalue.text=resources.getString(R.string.height_val)
                 recycleadapter.update(heightlist)
+                idRecyclerViewHorizontalList.layoutManager?.scrollToPosition(30)
             }
             "3" -> {
                 age_include.visibility = View.VISIBLE
                 gender_include.visibility = View.GONE
                 textvalue.text=resources.getString(R.string.wieght_val)
                 recycleadapter.update(weightlist)
+                idRecyclerViewHorizontalList.layoutManager?.scrollToPosition(75)
             }
 
         }

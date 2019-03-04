@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/welcome_screen">
+    android:background="@drawable/welcome_screen_4">
 
     <TextView
         android:id="@+id/one"
@@ -12,11 +12,11 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="21dp"
-        android:gravity="center"
         android:fontFamily="@font/raleway_bold"
-        android:text="@string/infothird"
+        android:gravity="center"
+        android:text="@string/infofourth"
         android:textColor="@color/white"
-        android:textSize="30dp" />
+        android:textSize="40dp" />
 
     <TextView
         android:id="@+id/two"
@@ -34,8 +34,10 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_above="@+id/three"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:background="@color/white" />
 
     <RelativeLayout
@@ -46,18 +48,22 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:onClick="onClickfun"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:onClick="moveToNext"
+            android:textSize="15sp"
+            android:padding="5dp"
             android:text="@string/next"
             android:textColor="@color/white" />
 
         <TextView
-            android:id="@+id/skip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_margin="10dp"
+            android:textSize="15sp"
+            android:onClick="finishActivity"
+            android:padding="5dp"
             android:text="@string/skip"
             android:textColor="@color/white" />
     </RelativeLayout>

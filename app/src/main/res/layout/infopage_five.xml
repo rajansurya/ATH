@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/welcome_screen_2">
+    android:background="@drawable/welcome_screen_5">
 
     <TextView
         android:id="@+id/one"
@@ -14,7 +14,7 @@
         android:layout_marginTop="21dp"
         android:fontFamily="@font/raleway_bold"
         android:gravity="center"
-        android:text="@string/infosecond"
+        android:text="@string/healthtips"
         android:textColor="@color/white"
         android:textSize="40dp" />
 
@@ -28,16 +28,16 @@
         android:layout_marginTop="21dp"
         android:fontFamily="@font/raleway_bold"
         android:gravity="center"
-        android:text="@string/accessdoctor"
+        android:text="@string/healthmsg"
         android:textColor="@color/white"
         android:textSize="20dp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_above="@+id/three"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        android:layout_above="@+id/three"
         android:background="@color/white" />
 
     <RelativeLayout
@@ -61,10 +61,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_margin="10dp"
+            android:textSize="15sp"
             android:onClick="finishActivity"
             android:padding="5dp"
             android:text="@string/skip"
-            android:textSize="15sp"
             android:textColor="@color/white" />
     </RelativeLayout>
 </RelativeLayout>

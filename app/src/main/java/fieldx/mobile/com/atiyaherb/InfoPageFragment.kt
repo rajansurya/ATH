@@ -7,18 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-class InfoPage1 : Fragment(), View.OnClickListener {
-    override fun onClick(p0: View) {
-        when (p0.id) {
-
-        }
-    }
-
+class InfoPageFragment : Fragment() {
     var pageno: Int = 0
-    lateinit var infopage: InfoPage
 
     companion object {
-        fun newInstance(pagenod: Int) = InfoPage1().apply {
+        fun newInstance(pagenod: Int) = InfoPageFragment().apply {
             arguments = Bundle(2).apply {
                 putInt("MY_BOOLEAN", pagenod)
             }
@@ -36,15 +29,14 @@ class InfoPage1 : Fragment(), View.OnClickListener {
             viewint = R.layout.infopage_three
         } else if (pageno == 3) {
             viewint = R.layout.infopage_fourth
+        } else if (pageno == 4) {
+            viewint = R.layout.infopage_five
         }
         var view = inflater.inflate(viewint, container, false)
         return view
 
     }
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        infopage = context as InfoPage
-    }
+
 
 }
