@@ -1,5 +1,6 @@
 package fieldx.mobile.com.atiyaherb
 
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -21,9 +22,9 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     var agelist = ArrayList<String>(60)
     var heightlist = ArrayList<String>(10)
     var weightlist = ArrayList<String>(150)
-    lateinit var recycleadapter :RecyclerViewHorizontalListAdapter
+    lateinit var recycleadapter: RecyclerViewHorizontalListAdapter
 
-            override fun onClick(p0: View) {
+    override fun onClick(p0: View) {
         when (p0.id) {
 
         }
@@ -33,16 +34,16 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         for (i in 18..60) {
-            agelist.add( i.toString())
+            agelist.add(i.toString())
         }
         for (i in 1..10) {
             for (j in 1..12) {
-                heightlist.add( i.toString() + "'" + j.toString() + "''")
+                heightlist.add(i.toString() + "'" + j.toString() + "''")
             }
         }
         heightlist.reverse()
         for (i in 1..150)
-            weightlist.add( i.toString())
+            weightlist.add(i.toString())
         weightlist.reverse()
 
         craeteView()
@@ -51,7 +52,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     fun craeteView() {
 
 
-         recycleadapter = RecyclerViewHorizontalListAdapter(this)
+        recycleadapter = RecyclerViewHorizontalListAdapter(this)
         agelist.reverse()
         recycleadapter.update(agelist)
         idRecyclerViewHorizontalList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true)
@@ -97,31 +98,31 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
     fun finduserinfo(tag: String) {
         when (tag) {
-           /* "0" -> {
+            "0" -> {
                 age_include.visibility = View.GONE
                 gender_include.visibility = View.VISIBLE
 
-                recycleadapter.update(agelist)
-                idRecyclerViewHorizontalList.layoutManager?.scrollToPosition(15)
-            }*/
+                //recycleadapter.update(agelist)
+                //idRecyclerViewHorizontalList.layoutManager?.scrollToPosition(15)
+            }
             "1" -> {
                 age_include.visibility = View.VISIBLE
                 gender_include.visibility = View.GONE
-                textvalue.text=resources.getString(R.string.age_val)
+                textvalue.text = resources.getString(R.string.age_val)
                 recycleadapter.update(agelist)
                 idRecyclerViewHorizontalList.layoutManager?.scrollToPosition(15)
             }
             "2" -> {
                 age_include.visibility = View.VISIBLE
                 gender_include.visibility = View.GONE
-                textvalue.text=resources.getString(R.string.height_val)
+                textvalue.text = resources.getString(R.string.height_val)
                 recycleadapter.update(heightlist)
                 idRecyclerViewHorizontalList.layoutManager?.scrollToPosition(30)
             }
             "3" -> {
                 age_include.visibility = View.VISIBLE
                 gender_include.visibility = View.GONE
-                textvalue.text=resources.getString(R.string.wieght_val)
+                textvalue.text = resources.getString(R.string.wieght_val)
                 recycleadapter.update(weightlist)
                 idRecyclerViewHorizontalList.layoutManager?.scrollToPosition(75)
             }
@@ -129,4 +130,8 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
+    fun finishActivity(view: View) {
+        MainActivity@ this.finish()
+        startActivity(Intent(applicationContext, DiseasesView::class.java))
+    }
 }

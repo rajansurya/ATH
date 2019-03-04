@@ -25,6 +25,9 @@
         <activity
             android:name=".InfoPage"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".DiseasesView"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -1,9 +1,11 @@
 package fieldx.mobile.com.atiyaherb
 
 import android.app.Activity
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.Gravity
+import android.view.View
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.diseaseview.*
@@ -60,4 +62,6 @@ class DiseasesView:BaseActivity(){
 
         return textView
     }
+
+
 }
