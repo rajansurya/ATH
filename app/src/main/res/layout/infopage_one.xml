@@ -40,31 +40,5 @@
         android:layout_marginRight="5dp"
         android:background="@color/white" />
 
-    <RelativeLayout
-        android:id="@+id/three"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:onClick="moveToNext"
-            android:padding="5dp"
-            android:textSize="15sp"
-            android:text="@string/next"
-            android:textColor="@color/white" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_margin="10dp"
-            android:onClick="finishActivity"
-            android:textSize="15sp"
-            android:padding="5dp"
-            android:text="@string/skip"
-            android:textColor="@color/white" />
-    </RelativeLayout>
+    <include layout="@layout/info_footer" />
 </RelativeLayout>

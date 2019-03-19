@@ -27,6 +27,7 @@ class InfoPage : FragmentActivity() ,ViewPager.OnPageChangeListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.infopage_view)
+
         var listfrg = ArrayList<Fragment>()
         listfrg.add(InfoPageFragment.newInstance(0))
         listfrg.add(InfoPageFragment.newInstance(1))

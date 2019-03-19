@@ -8,4 +8,6 @@
     <color name="white">#FFFFFF</color>
     <color name="cardview_shadow_start_color">#20ABFF</color>
     <color name="cardview_shadow_end_color">#03000000</color>
+    <color name="colorTextHint">#e6e6e6</color>
+    <color name="registration_header">#0C4B92</color>
 </resources>

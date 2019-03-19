@@ -19,4 +19,13 @@
     <string name="healthmsg">Receive trusted health tips from top doctors for you and your loved ones</string>
     <string name="hsk">HSK</string>
     <string name="createaccount">Create Your HSK Account</string>
+    <string name="verify_reg">Verify Yourself</string>
+    <string name="name">Name</string>
+    <string name="age">Age</string>
+    <string name="gender">Gender</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="disease">Disease(if any)</string>
+    <string name="register_msg">You\'ll receive an SMS to verify your identity, but we\'ll never spam. </string>
+
 </resources>
