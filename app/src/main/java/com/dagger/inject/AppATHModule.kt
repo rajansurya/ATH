@@ -59,8 +59,8 @@ class AppATHModule {
 
         //add logger
         val logging: HttpLoggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-        okHttpClientBuilder.addInterceptor(logging);
-        okHttpClientBuilder.addInterceptor(requestInterceptor)
+        okHttpClientBuilder.interceptors().add(logging)
+        okHttpClientBuilder.interceptors().add(requestInterceptor);
         val okhttpclient: OkHttpClient = okHttpClientBuilder.build()
 
         val retrofit: Retrofit = Retrofit.Builder()

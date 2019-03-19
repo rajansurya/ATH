@@ -27,5 +27,6 @@
     <string name="height">Height</string>
     <string name="disease">Disease(if any)</string>
     <string name="register_msg">You\'ll receive an SMS to verify your identity, but we\'ll never spam. </string>
+    <string name="term">By signing up,you agree to our <u>Term of Service ABD Privacy Policy</u></string>
 
 </resources>

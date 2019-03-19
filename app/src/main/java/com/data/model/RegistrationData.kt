@@ -8,7 +8,7 @@ class RegistrationData {
     @SerializedName("name")
     lateinit var name: String
     @SerializedName("mobile")
-    lateinit var mobile: String
+     var mobile: String="9876754321"
     @SerializedName("password")
     lateinit var password: String
     @SerializedName("gender")
