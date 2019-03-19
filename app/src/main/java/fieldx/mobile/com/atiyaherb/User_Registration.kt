@@ -2,6 +2,7 @@ package fieldx.mobile.com.atiyaherb
 
 import android.os.Bundle
 import com.activity.module.LoginViewModule
+import com.data.model.RegistrationData
 import javax.inject.Inject
 
 class User_Registration : BaseActivity() {
@@ -12,6 +13,6 @@ class User_Registration : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.user_registration)
 
-        registrationAPI.returnBackToView()
+        registrationAPI.returnBackToView( RegistrationData())
     }
 }
