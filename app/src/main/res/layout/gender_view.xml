@@ -10,6 +10,8 @@
         android:layout_marginTop="20dp">
 
         <LinearLayout
+            android:id="@+id/maleclick"
+            android:clickable="true"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:background="@drawable/male_gender_strok"
@@ -22,14 +24,20 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/male_icon" />
 
-            <TextView
+            <CheckBox
+                android:id="@+id/maleclickck"
                 android:layout_width="wrap_content"
+                android:duplicateParentState="true"
                 android:layout_height="wrap_content"
+                android:clickable="false"
                 android:text="Male"
-                android:textColor="@color/white" />
+                android:button="@null"
+                android:textColor="@drawable/gender_color_selector" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/femaleclick"
+            android:clickable="true"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_marginLeft="15dp"
@@ -43,11 +51,15 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/female_icon" />
 
-            <TextView
+            <CheckBox
+                android:id="@+id/femaleclickck"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:duplicateParentState="true"
                 android:text="Female"
-                android:textColor="@color/white" />
+                android:clickable="false"
+                android:button="@null"
+                android:textColor="@drawable/gender_color_selector" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

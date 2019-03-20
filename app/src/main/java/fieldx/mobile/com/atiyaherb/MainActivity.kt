@@ -13,6 +13,7 @@ import com.data.model.InfoData
 import com.view.adapter.RecyclerViewHorizontalListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.age_view.*
+import kotlinx.android.synthetic.main.gender_view.*
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), View.OnClickListener {
@@ -33,6 +34,13 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        fillData()
+        craeteView()
+
+    }
+
+    fun fillData() {
         for (i in 18..60) {
             agelist.add(i.toString())
         }
@@ -45,30 +53,35 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         for (i in 1..150)
             weightlist.add(i.toString())
         weightlist.reverse()
-
-        craeteView()
     }
 
     fun craeteView() {
-
-
+        maleclick.setOnClickListener {
+            maleclickck.isChecked = true
+            femaleclickck.isChecked = false
+        }
+        femaleclick.setOnClickListener {
+            maleclickck.isChecked = false
+            femaleclickck.isChecked = true
+        }
         recycleadapter = RecyclerViewHorizontalListAdapter(this)
         agelist.reverse()
         recycleadapter.update(agelist)
         idRecyclerViewHorizontalList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true)
         idRecyclerViewHorizontalList.adapter = recycleadapter
-        var list = ArrayList<InfoData>()
+        val list = ArrayList<InfoData>()
         list.add(InfoData("I am a ?", R.drawable.age_drawable_left))
         list.add(InfoData("Age", R.drawable.calender_drawable_left))
         list.add(InfoData("Height", R.drawable.height_drawable_left))
         list.add(InfoData("Weight", R.drawable.weight_drawable_left))
         flowdistrict.childSpacing = 10
         list.forEachIndexed { index, s -> flowdistrict.addView(buildLabel(s.name, index.toString(), s.drwable)) }
-
+        textviewClicked = flowdistrict.getChildAt(0) as TextView
+        textviewClicked?.isSelected = true
     }
 
     fun buildLabel(text: String, tag: String, drawble: Int): TextView {
-        var textView = TextView(this)
+        val textView = TextView(this)
         textView.text = text
         textView.tag = tag
         textView.textSize = 16F
@@ -89,7 +102,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             }
             textView.isSelected = true
             textviewClicked = textView
-            println(textView.tag.toString())
+            // println(textView.tag.toString())
             finduserinfo(textView.tag.toString())
         }
 
@@ -101,9 +114,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             "0" -> {
                 age_include.visibility = View.GONE
                 gender_include.visibility = View.VISIBLE
-
-                //recycleadapter.update(agelist)
-                //idRecyclerViewHorizontalList.layoutManager?.scrollToPosition(15)
             }
             "1" -> {
                 age_include.visibility = View.VISIBLE
