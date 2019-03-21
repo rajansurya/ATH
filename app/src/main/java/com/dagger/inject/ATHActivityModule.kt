@@ -3,10 +3,7 @@ package com.dagger.inject
 import com.activity.module.LoginViewModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import fieldx.mobile.com.atiyaherb.BaseActivity
-import fieldx.mobile.com.atiyaherb.DiseasesView
-import fieldx.mobile.com.atiyaherb.MainActivity
-import fieldx.mobile.com.atiyaherb.User_Registration
+import fieldx.mobile.com.atiyaherb.*
 
 @Module
 abstract class ATHActivityModule {
@@ -22,4 +19,10 @@ abstract class ATHActivityModule {
 
     @ContributesAndroidInjector(modules = arrayOf(LoginViewModule::class))
     abstract fun bindUser_Registration(): User_Registration
+
+    @ContributesAndroidInjector
+    abstract fun bindinfo(): InfoPage
+
+    @ContributesAndroidInjector
+    abstract fun bindsplash(): Splash
 }

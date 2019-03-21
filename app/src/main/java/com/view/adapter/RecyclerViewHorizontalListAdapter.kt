@@ -16,13 +16,11 @@ import android.view.LayoutInflater
 /**
  * Created by Rajan on 01-03-2019.
  */
-class RecyclerViewHorizontalListAdapter : RecyclerView.Adapter<RecyclerViewHorizontalListAdapter.ViewHolder> {
+class RecyclerViewHorizontalListAdapter constructor(var context: Context,var viewClick :viewHolderClick): RecyclerView.Adapter<RecyclerViewHorizontalListAdapter.ViewHolder>() {
     lateinit var arrayl: ArrayList<String>
-    lateinit var context: Context
+   // lateinit var context: Context
 
-    constructor(contextl: Context) {
-        context = contextl
-    }
+
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(context)
@@ -42,6 +40,7 @@ class RecyclerViewHorizontalListAdapter : RecyclerView.Adapter<RecyclerViewHoriz
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
         p0.itemView.count.text = arrayl.get(p1)
+        p0.itemView.setOnClickListener { viewClick.itemClick(p1) }
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -49,5 +48,8 @@ class RecyclerViewHorizontalListAdapter : RecyclerView.Adapter<RecyclerViewHoriz
         init {
             itemView.count.text = ""
         }
+    }
+    interface viewHolderClick{
+        fun itemClick(position:Int)
     }
 }

@@ -7,9 +7,19 @@ import android.support.v4.app.FragmentActivity
 import android.support.v4.view.ViewPager
 import android.view.View
 import com.view.adapter.ViewPagerAdapter
+import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.infopage_view.*
+import javax.inject.Inject
+import android.content.SharedPreferences
 
-class InfoPage : FragmentActivity() ,ViewPager.OnPageChangeListener{
+
+
+class InfoPage : BaseActivity() ,ViewPager.OnPageChangeListener{
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+
     override fun onPageScrollStateChanged(p0: Int) {
 
     }
@@ -27,6 +37,8 @@ class InfoPage : FragmentActivity() ,ViewPager.OnPageChangeListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.infopage_view)
+
+        sharedPreferences.edit().putBoolean("isfirstTime",false).apply()
 
         var listfrg = ArrayList<Fragment>()
         listfrg.add(InfoPageFragment.newInstance(0))

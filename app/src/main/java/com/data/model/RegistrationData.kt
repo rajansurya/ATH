@@ -8,7 +8,7 @@ class RegistrationData {
     @SerializedName("name")
     lateinit var name: String
     @SerializedName("mobile")
-     var mobile: String="9876754321"
+     var mobile: String="9876754389"
     @SerializedName("password")
     lateinit var password: String
     @SerializedName("gender")
@@ -27,7 +27,7 @@ class RegistrationData {
     @SerializedName("longitude")
     lateinit var longitude: String
     @SerializedName("disease")
-    lateinit var disease: List<String>
+    lateinit var disease: ArrayList<String>
 
 
 }

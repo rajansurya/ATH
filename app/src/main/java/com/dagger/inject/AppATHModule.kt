@@ -17,6 +17,10 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
+import android.preference.PreferenceManager
+import android.content.SharedPreferences
+
+
 
 @Module
 class AppATHModule {
@@ -68,6 +72,11 @@ class AppATHModule {
         return retrofit
     }
 
+    @Provides
+    @Singleton
+    fun providesSharedPreferences(application: Application): SharedPreferences {
+        return PreferenceManager.getDefaultSharedPreferences(application)
+    }
     @Singleton
     @Provides
     fun provideLogin_Repository(implogin_rep: ImpLogin_Repository): Login_Repository {

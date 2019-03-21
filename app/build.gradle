@@ -52,4 +52,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
+    implementation ('com.wefika:horizontal-picker:1.1.1'){
+        exclude group: 'com.android.support'
+        exclude module: 'appcompat-v7'
+        exclude module: 'support-v4'
+    }
 }

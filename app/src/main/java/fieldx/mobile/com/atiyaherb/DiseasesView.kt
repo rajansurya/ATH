@@ -1,5 +1,6 @@
 package fieldx.mobile.com.atiyaherb
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Typeface
@@ -13,10 +14,38 @@ import kotlinx.android.synthetic.main.diseaseview.*
 /**
  * Created by Rajan on 03-03-2019.
  */
-class DiseasesView:BaseActivity(){
+class DiseasesView:BaseActivity() ,View.OnClickListener{
+    var storepositio:HashMap<String,String> = HashMap()
+    override fun onClick(p0: View?) {
+        when(p0?.id){
+            R.id.submit->{
+                val intents = Intent(applicationContext, User_Registration::class.java)
+                var intent=intent
+                intents.putExtra("gender", intent.getStringExtra("gender"))
+                intents.putExtra("age", intent.getStringExtra("age"))
+                intents.putExtra("weight", intent.getStringExtra("weight"))
+                intents.putExtra("height", intent.getStringExtra("height"))
+                var st:ArrayList<String> = ArrayList()
+                for ( sta:String in storepositio.keys){
+                    st.add(storepositio.get(sta)!!)
+                }
+                intents.putExtra("desies", st)
+
+                println("storepositio.values "+st)
+                startActivity(intents)
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.diseaseview)
+        var intent=intent
+        var age=intent.getStringExtra("age")
+        var gender=intent.getStringExtra("gender")
+        var weight=intent.getStringExtra("weight")
+        var height=intent.getStringExtra("height")
+        println("weight  "+weight)
         var dieas=ArrayList<String>()
         dieas.add("Ashtama")
         dieas.add("Hypertension")
@@ -34,12 +63,13 @@ class DiseasesView:BaseActivity(){
         flowdiease.childSpacing = 10
         flowdiease.rowSpacing=7F
         dieas.forEachIndexed { index, s -> flowdiease.addView(buildLabel(s,index.toString())) }
-
+        submit.setOnClickListener(this)
 
 
 
     }
 
+    @SuppressLint("ResourceType")
     fun buildLabel(text: String, tag: String): TextView {
         var textView = TextView(this)
         textView.text = text
@@ -57,7 +87,13 @@ class DiseasesView:BaseActivity(){
         textView.setBackgroundResource(R.drawable.background_selector)
         textView.setOnClickListener {
             textView.isSelected = true
-            println(textView.tag.toString())
+            if (storepositio.containsKey(textView.tag.toString())){
+                textView.isSelected = false
+                storepositio.remove(textView.tag.toString())
+            }else{
+                storepositio.put(textView.tag.toString(),textView.text.toString())
+            }
+
         }
 
         return textView

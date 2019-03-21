@@ -29,6 +29,9 @@
         <activity
             android:name=".DiseasesView"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".User_Registration"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
