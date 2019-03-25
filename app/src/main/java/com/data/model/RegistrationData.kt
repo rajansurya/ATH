@@ -14,7 +14,7 @@ class RegistrationData(var stloc: ObservableField<String>) : BaseObservable() {
 
     //var name: String = ""
     @SerializedName("name")
-    var name: ObservableField<String> = ObservableField("")
+    var name: ObservableField<String> = stloc
         @Bindable
         set(value) {
             stloc = value

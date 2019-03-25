@@ -2,7 +2,6 @@
 <layout>
 
     <data>
-
         <variable
             name="model"
             type="com.data.model.RegistrationData" />
@@ -39,9 +38,9 @@
                     android:id="@+id/etUserName"
                     style="@style/edit_text_style"
                     android:hint="@string/name"
-                    app:diseasValidatiorA="@{model.name}"
+                    android:inputType="text"
                     android:text="@={model.name}"
-                    android:inputType="text" />
+                    app:diseasValidatiorA="@{model.name}" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -55,6 +54,7 @@
                     android:id="@+id/etUserMobile"
                     style="@style/edit_text_style"
                     android:hint="@string/mobile"
+                    android:text="@={model.mobile}"
                     android:inputType="text" />
 
             </android.support.design.widget.TextInputLayout>
@@ -69,8 +69,8 @@
                     android:id="@+id/etUserAge"
                     style="@style/edit_text_style"
                     android:hint="@string/age"
-                    android:text="@={model.age}"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:text="@={model.age}" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -84,8 +84,8 @@
                     android:id="@+id/etUsergender"
                     style="@style/edit_text_style"
                     android:hint="@string/gender"
-                    android:text="@={model.gender}"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:text="@={model.gender}" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -99,8 +99,8 @@
                     android:id="@+id/etUserHeight"
                     style="@style/edit_text_style"
                     android:hint="@string/height"
-                    android:text="@={model.height}"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:text="@={model.height}" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -114,8 +114,8 @@
                     android:id="@+id/etUserWeight"
                     style="@style/edit_text_style"
                     android:hint="@string/weight"
-                    android:text="@={model.weight}"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:text="@={model.weight}" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -129,8 +129,8 @@
                     android:id="@+id/etUserDeaise"
                     style="@style/edit_text_style"
                     android:hint="@string/disease"
-
-                    android:inputType="text" />
+                    android:inputType="text"
+                    app:convertListtoString="@{model.disease}" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -142,6 +142,7 @@
                 android:textColor="@color/white" />
 
             <TextView
+                android:id="@+id/verify_now"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_margin="20dp"

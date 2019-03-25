@@ -12,22 +12,25 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class ImpLogin_Repository @Inject constructor(var apicall: Login_Service) : Login_Repository {
+
+
     override fun getLoginResponse(registration: RegistrationData): Call<Restration_response> {
+        /*Put Validation Here*/
         val ob: Call<Restration_response> = apicall.loginData(registration)
-       /* ob.enqueue(object : Callback<Any> {
-            override fun onFailure(call: Call<Any>?, t: Throwable?) {
-                Log.i("Response   onFailure ", t?.stackTrace.toString());
-            }
 
-            override fun onResponse(call: Call<Any>?, response: Response<Any>) {
-                if (response.isSuccessful) {
-                    Log.i(" RAJAN KODARE  ", Gson().toJson(response?.body()));
-                } else {
-                    Log.i(" RAJAN KODARE  ", response.errorBody().toString());
-                }
-            }
+        /* ob.enqueue(object : Callback<Any> {
+             override fun onFailure(call: Call<Any>?, t: Throwable?) {
+                 Log.i("Response   onFailure ", t?.stackTrace.toString());
+             }
 
-        })*/
+             override fun onResponse(call: Call<Any>?, response: Response<Any>) {
+                 if (response.isSuccessful) {
+                     Log.i(" RAJAN KODARE  ", Gson().toJson(response?.body()));
+                 } else {
+                     Log.i(" RAJAN KODARE  ", response.errorBody().toString());
+                 }
+             }
+         })*/
         return ob//apicall.loginData()
 
     }
