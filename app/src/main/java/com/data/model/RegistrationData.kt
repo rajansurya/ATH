@@ -18,7 +18,7 @@ class RegistrationData(var stloc: ObservableField<String>) : BaseObservable() {
         @Bindable
         set(value) {
             stloc = value
-            notifyPropertyChanged(BR.name)
+           // notifyPropertyChanged(BR.name)
         }
 
 

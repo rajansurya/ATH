@@ -23,24 +23,18 @@ class User_Registration : BaseActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var on: UserRegistrationBinding = DataBindingUtil.setContentView<UserRegistrationBinding>(this, R.layout.user_registration)
+        val on: UserRegistrationBinding = DataBindingUtil.setContentView<UserRegistrationBinding>(this, R.layout.user_registration)
 
-        var intent = intent
-        var age = intent.getStringExtra("age")
-        var gender = intent.getStringExtra("gender")
-        var weight = intent.getStringExtra("weight")
-        var height = intent.getStringExtra("height")
-        desies = intent.getStringArrayListExtra("desies") as ArrayList<String>
-
-
-        var ob = RegistrationData(ObservableField<String>(""))
+        val intent = intent
+        val ob = RegistrationData(ObservableField<String>(""))
         ob.age = intent.getStringExtra("age")
+        desies = intent.getStringArrayListExtra("desies") as ArrayList<String>
         ob.disease = desies
         ob.gender = intent.getStringExtra("gender")
         ob.weight = intent.getStringExtra("weight")
         ob.height = intent.getStringExtra("height")
-        on.model = ob
 
+        on.model = ob
 
     }
     override fun onClick(p0: View?) {
