@@ -1,5 +1,6 @@
 package com.data.model
 
+import android.arch.lifecycle.LiveData
 import android.databinding.BaseObservable
 import android.databinding.Bindable
 import android.databinding.ObservableField
@@ -18,7 +19,7 @@ class RegistrationData(var stloc: ObservableField<String>) : BaseObservable() {
         @Bindable
         set(value) {
             stloc = value
-           // notifyPropertyChanged(BR.name)
+            // notifyPropertyChanged(BR.name)
         }
 
 
@@ -40,20 +41,13 @@ class RegistrationData(var stloc: ObservableField<String>) : BaseObservable() {
     @SerializedName("latitude")
     lateinit var latitude: String
     @SerializedName("longitude")
-    lateinit var longitude: String
-
+    var longitude: String = ""
+        get() {return field}
+        set(value) {
+            field = value
+        }
 
     @SerializedName("disease")
     lateinit var disease: ArrayList<String>
 
-    /* @Bindable
-     fun getUName(): String {
-         return name
-     }
-
-
-     fun setUname(sy: String) {
-         name = sy
-         notifyPropertyChanged(BR.uName)
-     }*/
 }

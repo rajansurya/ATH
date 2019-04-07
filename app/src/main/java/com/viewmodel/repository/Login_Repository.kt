@@ -6,4 +6,5 @@ import retrofit2.Call
 
 interface Login_Repository {
     fun getLoginResponse(registration: RegistrationData): Call<Restration_response>
+    fun getOTPResponse(url:String):Call<Any>
 }

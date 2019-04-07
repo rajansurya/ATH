@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.user_registration.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 import javax.inject.Inject
 
 class User_Registration : BaseActivity(), View.OnClickListener {
@@ -35,8 +36,9 @@ class User_Registration : BaseActivity(), View.OnClickListener {
         ob.height = intent.getStringExtra("height")
 
         on.model = ob
-
+        verify_otp.setOnClickListener(this)
     }
+
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.verify_now -> {
@@ -65,7 +67,29 @@ class User_Registration : BaseActivity(), View.OnClickListener {
                 })
 
             }
+            R.id.verify_otp -> {
+                var msg = "Use Code "+getRandomNumberString()+" to verify your mobile on HSK."
+                var otpurl: String = "http://www.myvaluefirst.com/smpp/sendsms?username=" + "unayurhtpotp" + "&password=" + "unayr981" + "&to=9958778861&from=AHHRBS &text=" + msg + "&dlr-mask=19&dlr-url"
+                var call = registrationAPI.sendOTPToMobile(otpurl)
+                call.enqueue(object : Callback<Any> {
+                    override fun onFailure(call: Call<Any>?, t: Throwable?) {
+                        Log.i("OTP ", t?.stackTrace.toString())
+                    }
+
+                    override fun onResponse(call: Call<Any>?, response: Response<Any>) {
+                        if (response.isSuccessful) {
+                            Log.i("FFF  ", response.body()?.toString())
+                        }
+                    }
+
+                })
+            }
         }
     }
 
+    fun getRandomNumberString(): String {
+        var randam = Random()
+        var number = randam.nextInt(999999)
+        return String.format("%06d", number)
+    }
 }

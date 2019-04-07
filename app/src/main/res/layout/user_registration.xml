@@ -161,6 +161,16 @@
                     android:text="VERIFY NOW"
                     android:textColor="@color/white"
                     android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/verify_otp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:background="@color/registration_header"
+                    android:gravity="center"
+                    android:text="VERIFY otp"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:layout_width="match_parent"

@@ -7,6 +7,7 @@ import dagger.Module
 import javax.inject.Inject
 
 @Module
-class LoginViewModule @Inject constructor(var login_repository: Login_Repository) :ViewModel(){
+class LoginViewModule @Inject constructor(var login_repository: Login_Repository) : ViewModel() {
     fun returnBackToView(registration: RegistrationData) = login_repository.getLoginResponse(registration)
+    fun sendOTPToMobile(url:String) = login_repository.getOTPResponse(url)
 }

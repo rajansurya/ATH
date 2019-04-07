@@ -12,6 +12,9 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class ImpLogin_Repository @Inject constructor(var apicall: Login_Service) : Login_Repository {
+    override fun getOTPResponse(url: String): Call<Any> {
+        return apicall.otpGet(url)
+    }
 
 
     override fun getLoginResponse(registration: RegistrationData): Call<Restration_response> {
