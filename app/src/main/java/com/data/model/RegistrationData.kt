@@ -1,11 +1,9 @@
 package com.data.model
 
-import android.arch.lifecycle.LiveData
 import android.databinding.BaseObservable
 import android.databinding.Bindable
 import android.databinding.ObservableField
 import com.google.gson.annotations.SerializedName
-import fieldx.mobile.com.atiyaherb.BR
 
 class RegistrationData(var stloc: ObservableField<String>) : BaseObservable() {
     @Bindable
@@ -21,7 +19,8 @@ class RegistrationData(var stloc: ObservableField<String>) : BaseObservable() {
             stloc = value
             // notifyPropertyChanged(BR.name)
         }
-
+    val test: String
+        get() = gender
 
     @SerializedName("mobile")
     var mobile: String = "9876754389"
@@ -42,7 +41,9 @@ class RegistrationData(var stloc: ObservableField<String>) : BaseObservable() {
     lateinit var latitude: String
     @SerializedName("longitude")
     var longitude: String = ""
-        get() {return field}
+        get() {
+            return field
+        }
         set(value) {
             field = value
         }
