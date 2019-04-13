@@ -23,7 +23,7 @@ class RegistrationData(var stloc: ObservableField<String>) : BaseObservable() {
         get() = gender
 
     @SerializedName("mobile")
-    var mobile: String = "9876754389"
+    var mobile: String = "9958778861"
     @SerializedName("password")
     lateinit var password: String
     @SerializedName("gender")

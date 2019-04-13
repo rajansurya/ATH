@@ -19,7 +19,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 import android.preference.PreferenceManager
 import android.content.SharedPreferences
-
+import com.service.imp.RequestInterceptorOTP
+import javax.inject.Named
 
 
 @Module
@@ -45,6 +46,13 @@ class AppATHModule {
 
     @Provides
     @Singleton
+    fun providesRequestInterceptorOTP(requestHeaders: RequestHeaders): RequestInterceptorOTP {
+        return RequestInterceptorOTP(requestHeaders)
+    }
+
+
+    @Provides
+    @Singleton
     fun provideOkHttp(): OkHttpClient.Builder {
         return OkHttpClient.Builder()
     }
@@ -52,13 +60,14 @@ class AppATHModule {
     @Provides
     @Singleton
     fun provideGson(): Gson {
-        val gsonBuilder = GsonBuilder()
+        val gsonBuilder = GsonBuilder().setLenient()
         gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
         return gsonBuilder.create()
     }
 
     @Provides
     @Singleton
+    @NamedClone(TrackerType.POST)
     fun provideRetrofit(gson: Gson, requestInterceptor: RequestInterceptor, okHttpClientBuilder: OkHttpClient.Builder): Retrofit {
 
         //add logger
@@ -74,9 +83,26 @@ class AppATHModule {
 
     @Provides
     @Singleton
+    @NamedClone(TrackerType.GET)
+    fun provideRetrofitGetOTP(gson: Gson, okHttpClientBuilder: OkHttpClient.Builder): Retrofit {
+
+        //add logger
+        val logging: HttpLoggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        okHttpClientBuilder.interceptors().add(logging)
+//        okHttpClientBuilder.interceptors().add(requestInterceptor)
+        val okhttpclient: OkHttpClient = okHttpClientBuilder.build()
+
+        val retrofit: Retrofit = Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create(gson)).baseUrl(BuildConfig.BASE_URL).client(okhttpclient).build()
+        return retrofit
+    }
+
+    @Provides
+    @Singleton
     fun providesSharedPreferences(application: Application): SharedPreferences {
         return PreferenceManager.getDefaultSharedPreferences(application)
     }
+
     @Singleton
     @Provides
     fun provideLogin_Repository(implogin_rep: ImpLogin_Repository): Login_Repository {

@@ -8,9 +8,9 @@ import android.widget.Toast
 
 @BindingAdapter("diseasValidatiorA")
 fun diseasValidatior(editText: EditText, text: String) {
-    if (text.length < 8) {
-        Toast.makeText(editText.context, "Disease Length", Toast.LENGTH_SHORT).show()
-    }
+    //if (text.length < 8) {
+       // Toast.makeText(editText.context, "Disease Length", Toast.LENGTH_SHORT).show()
+   // }
 }
 
 @BindingAdapter("convertListtoString")
