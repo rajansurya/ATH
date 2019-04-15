@@ -1,11 +1,9 @@
 package fieldx.mobile.com.atiyaherb
 
+import android.app.AlertDialog
 import android.content.Context
 import android.util.TypedValue
-import android.graphics.drawable.ColorDrawable
-import android.view.Window.FEATURE_NO_TITLE
-import android.app.ProgressDialog
-import android.view.Window
+import dmax.dialog.SpotsDialog
 
 
 object Globlefunction {
@@ -14,8 +12,8 @@ object Globlefunction {
     }
 
 
-    fun getProgressDialog(ctx: Context): ProgressDialog {
-        val dialog = ProgressDialog(ctx)
+    fun getProgressDialog(ctx: Context): AlertDialog {
+       /* val dialog = ProgressDialog(ctx)
         try {
             dialog.setCancelable(false)
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -24,7 +22,14 @@ object Globlefunction {
             dialog.window!!.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
         } catch (ex: Exception) {
             ex.printStackTrace()
-        }
+        }*/
+        val dialog: AlertDialog = SpotsDialog.Builder()
+                .setContext(ctx)
+                .setMessage("Please Wait...")
+                .setCancelable(false)
+                .build()
+
+
 
         return dialog
     }

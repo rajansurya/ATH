@@ -7,6 +7,7 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.diseaseview.*
@@ -16,22 +17,24 @@ import kotlinx.android.synthetic.main.diseaseview.*
  */
 class DiseasesView:BaseActivity() ,View.OnClickListener{
     var storepositio:HashMap<String,String> = HashMap()
+    lateinit var progressBar: ProgressBar
+
     override fun onClick(p0: View?) {
         when(p0?.id){
             R.id.submit->{
                 val intents = Intent(applicationContext, User_Registration::class.java)
-                var intent=intent
+                val intent=intent
                 intents.putExtra("gender", intent.getStringExtra("gender"))
                 intents.putExtra("age", intent.getStringExtra("age"))
                 intents.putExtra("weight", intent.getStringExtra("weight"))
                 intents.putExtra("height", intent.getStringExtra("height"))
-                var st:ArrayList<String> = ArrayList()
+                val st:ArrayList<String> = ArrayList()
                 for ( sta:String in storepositio.keys){
                     st.add(storepositio.get(sta)!!)
                 }
                 intents.putExtra("desies", st)
 
-                println("storepositio.values "+st)
+                //println("storepositio.values "+st)
                 startActivity(intents)
             }
         }
@@ -64,7 +67,7 @@ class DiseasesView:BaseActivity() ,View.OnClickListener{
         flowdiease.rowSpacing=7F
         dieas.forEachIndexed { index, s -> flowdiease.addView(buildLabel(s,index.toString())) }
         submit.setOnClickListener(this)
-
+        progressBar= ProgressBar(this,null,android.R.attr.progressBarStyleSmall)
 
 
     }

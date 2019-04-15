@@ -1,5 +1,6 @@
 package fieldx.mobile.com.atiyaherb
 
+import android.app.AlertDialog
 import android.databinding.DataBindingUtil
 import android.databinding.ObservableField
 import android.os.Bundle
@@ -25,7 +26,7 @@ import android.app.ProgressDialog
 
 class User_Registration : BaseActivity(), View.OnClickListener, ViewCallbAck {
     lateinit var store_otp: String
-    lateinit  var progressbar:ProgressDialog
+    lateinit  var progressbar: AlertDialog
     override fun otpResponse(otp: String) {
         println("store_otp "+store_otp +"  otp "+otp)
         if (store_otp.equals(otp)) {
@@ -55,6 +56,7 @@ class User_Registration : BaseActivity(), View.OnClickListener, ViewCallbAck {
 
         on.model = ob
         verify_now.setOnClickListener(this)
+        showProgressBar()
     }
 
     override fun onClick(p0: View?) {
@@ -132,7 +134,7 @@ class User_Registration : BaseActivity(), View.OnClickListener, ViewCallbAck {
     }
     fun showProgressBar(){
         progressbar = Globlefunction.getProgressDialog(this)
-        progressbar.setMessage("Please Wait....")
+        progressbar.show()
     }
     fun hideProgressBar(){
         progressbar.dismiss()
