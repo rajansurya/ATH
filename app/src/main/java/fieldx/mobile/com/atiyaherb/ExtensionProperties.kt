@@ -9,5 +9,6 @@ import android.widget.Toast
 fun Fragment.close() = fragmentManager?.popBackStack()
 
 fun Activity.showToast(text: String) {
-    Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+    Toast.makeText(this, text, Toast.LENGTH_LONG).show()
 }
+

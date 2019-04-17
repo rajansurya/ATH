@@ -29,11 +29,8 @@ class User_Registration : BaseActivity(), View.OnClickListener, ViewCallbAck {
     lateinit  var progressbar: AlertDialog
     override fun otpResponse(otp: String) {
         println("store_otp "+store_otp +"  otp "+otp)
-        if (store_otp.equals(otp)) {
             verify()
-        } else {
-            showToast("OTP did not match")
-        }
+
 
     }
 
@@ -56,7 +53,6 @@ class User_Registration : BaseActivity(), View.OnClickListener, ViewCallbAck {
 
         on.model = ob
         verify_now.setOnClickListener(this)
-        showProgressBar()
     }
 
     override fun onClick(p0: View?) {
@@ -82,7 +78,7 @@ class User_Registration : BaseActivity(), View.OnClickListener, ViewCallbAck {
                         if (response.isSuccessful) {
                             hideProgressBar()
                             showToast("OTP has been send to Given mobile no.")
-                            val dalog: OTPAlertDialogFragment = OTPAlertDialogFragment.newInstanse("Enter OTP", this@User_Registration, this@User_Registration)
+                            val dalog: OTPAlertDialogFragment = OTPAlertDialogFragment.newInstanse("Enter OTP", this@User_Registration, this@User_Registration,store_otp)
                             dalog.show(supportFragmentManager, "dialog")
                         }
                     }

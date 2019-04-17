@@ -22,6 +22,6 @@ class AndroidApplication : Application(), HasActivityInjector {
     }
 
     /*companion object {
-        fun getAppContext() = AndroidApplication().context
+        fun getAppContext() = this
     }*/
 }

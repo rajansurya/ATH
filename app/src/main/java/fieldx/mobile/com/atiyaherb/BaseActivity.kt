@@ -24,7 +24,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
 
 
-    fun stateListDrawble(): StateListDrawable {
+   /* fun stateListDrawble(): StateListDrawable {
         val states = StateListDrawable()
         states.addState(intArrayOf(android.R.attr.state_pressed),
                 resources.getDrawable(R.drawable.gender_icon_black))
@@ -33,6 +33,6 @@ abstract class BaseActivity : AppCompatActivity() {
         states.addState(intArrayOf(),
                 resources.getDrawable(R.drawable.calender_icon_black))
         return states
-    }
+    }*/
 
 }
