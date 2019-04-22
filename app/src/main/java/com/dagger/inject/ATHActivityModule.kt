@@ -1,6 +1,7 @@
 package com.dagger.inject
 
 import com.activity.module.LoginViewModule
+import com.activity.module.User_verification_Module
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import fieldx.mobile.com.atiyaherb.*
@@ -25,4 +26,7 @@ abstract class ATHActivityModule {
 
     @ContributesAndroidInjector
     abstract fun bindsplash(): Splash
+
+    @ContributesAndroidInjector
+    abstract fun bindUserverify():User_verification_Module
 }

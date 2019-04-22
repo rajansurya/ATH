@@ -1,13 +1,11 @@
 package fieldx.mobile.com.atiyaherb
 
-import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.util.TypedValue
 import android.view.Window
-import dmax.dialog.SpotsDialog
 
 
 object Globlefunction {

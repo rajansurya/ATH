@@ -15,6 +15,9 @@ import android.content.SharedPreferences
 
 
 class InfoPage : BaseActivity() ,ViewPager.OnPageChangeListener{
+    override fun setLayout(): Int {
+        return R.layout.infopage_view
+    }
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
@@ -36,7 +39,6 @@ class InfoPage : BaseActivity() ,ViewPager.OnPageChangeListener{
     var count: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.infopage_view)
 
         sharedPreferences.edit().putBoolean("isfirstTime",false).apply()
 

@@ -21,6 +21,10 @@ import kotlinx.android.synthetic.main.gender_view.*
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), View.OnClickListener, RecyclerViewHorizontalListAdapter.viewHolderClick, HorizontalPicker.OnItemClicked, HorizontalPicker.OnItemSelected {
+    override fun setLayout(): Int {
+        return R.layout.activity_main
+    }
+
     override fun onItemSelected(index: Int) {
         when (selectedoption) {
             "A" -> {
@@ -76,7 +80,6 @@ class MainActivity : BaseActivity(), View.OnClickListener, RecyclerViewHorizonta
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         fillData()
         craeteView()
     }

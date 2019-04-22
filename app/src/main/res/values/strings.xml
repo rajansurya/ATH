@@ -29,4 +29,6 @@
     <string name="register_msg">You\'ll receive an SMS to verify your identity, but we\'ll never spam. </string>
     <string name="term">By signing up,you agree to our <u>Term of Service ABD Privacy Policy</u></string>
     <string name="mobile">Mobile</string>
+    <string name="email">Email</string>
+    <string name="otp_msg">You\'ll receive an SMS to verify your indentity, but we will never spam.</string>
 </resources>

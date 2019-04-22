@@ -4,14 +4,11 @@ import android.app.AlertDialog
 import android.databinding.DataBindingUtil
 import android.databinding.ObservableField
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import android.view.View
-import android.widget.ProgressBar
 import com.activity.module.LoginViewModule
 import com.data.model.RegistrationData
 import com.data.model.Restration_response
-import com.google.gson.Gson
 import com.view.callback.ViewCallbAck
 import fieldx.mobile.com.atiyaherb.databinding.UserRegistrationBinding
 import kotlinx.android.synthetic.main.user_registration.*
@@ -20,16 +17,18 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 import javax.inject.Inject
-import android.app.ProgressDialog
-
 
 
 class User_Registration : BaseActivity(), View.OnClickListener, ViewCallbAck {
+    override fun setLayout(): Int {
+        return R.layout.user_registration
+    }
+
     lateinit var store_otp: String
-    lateinit  var progressbar: AlertDialog
+
     override fun otpResponse(otp: String) {
-        println("store_otp "+store_otp +"  otp "+otp)
-            verify()
+        println("store_otp " + store_otp + "  otp " + otp)
+        verify()
 
 
     }
@@ -60,7 +59,7 @@ class User_Registration : BaseActivity(), View.OnClickListener, ViewCallbAck {
             R.id.verify_now -> {
                 showProgressBar()
 
-                store_otp = getRandomNumberString()
+//                store_otp = getRandomNumberString()
                 val msg = "Use Code " + store_otp + " to verify your mobile on HSK."
                 val otpur = API_URL_FILE.OTP_API + "&to=" + etUserMobile.text.toString() + "&text=" + msg
                 //   val otpurl: String = "http://www.myvaluefirst.com/smpp/sendsms?username=" + "unayurhtpotp" + "&password=" + "unayr981" + "&to=9958778861&from=AHHRBS &text=" + msg + "&dlr-mask=19&dlr-url"
@@ -78,7 +77,7 @@ class User_Registration : BaseActivity(), View.OnClickListener, ViewCallbAck {
                         if (response.isSuccessful) {
                             hideProgressBar()
                             showToast("OTP has been send to Given mobile no.")
-                            val dalog: OTPAlertDialogFragment = OTPAlertDialogFragment.newInstanse("Enter OTP", this@User_Registration, this@User_Registration,store_otp)
+                            val dalog: OTPAlertDialogFragment = OTPAlertDialogFragment.newInstanse("Enter OTP", this@User_Registration, this@User_Registration, store_otp)
                             dalog.show(supportFragmentManager, "dialog")
                         }
                     }
@@ -123,16 +122,7 @@ class User_Registration : BaseActivity(), View.OnClickListener, ViewCallbAck {
         })
     }
 
-    fun getRandomNumberString(): String {
-        val randam = Random()
-        val number = randam.nextInt(999999)
-        return String.format("%06d", number)
-    }
-    fun showProgressBar(){
-        progressbar = Globlefunction.getProgressDialog(this)
-        progressbar.show()
-    }
-    fun hideProgressBar(){
-        progressbar.dismiss()
-    }
+
+
+
 }

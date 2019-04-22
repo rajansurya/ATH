@@ -16,6 +16,10 @@ import kotlinx.android.synthetic.main.diseaseview.*
  * Created by Rajan on 03-03-2019.
  */
 class DiseasesView:BaseActivity() ,View.OnClickListener{
+    override fun setLayout(): Int {
+        return R.layout.diseaseview
+    }
+
     var storepositio:HashMap<String,String> = HashMap()
     lateinit var progressBar: ProgressBar
 
@@ -42,7 +46,6 @@ class DiseasesView:BaseActivity() ,View.OnClickListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.diseaseview)
         var intent=intent
         var age=intent.getStringExtra("age")
         var gender=intent.getStringExtra("gender")
