@@ -15,7 +15,7 @@ import javax.inject.Inject
 class UserVarify : BaseActivity(), View.OnClickListener, ViewCallbAck {
 
     override fun otpResponse(otp: String) {
-
+        startActivityView(User_Health_Info::class.java)
     }
 
     lateinit var store_otp: String

@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.age_view.*
 import kotlinx.android.synthetic.main.gender_view.*
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), View.OnClickListener, RecyclerViewHorizontalListAdapter.viewHolderClick, HorizontalPicker.OnItemClicked, HorizontalPicker.OnItemSelected {
+class User_Health_Info : BaseActivity(), View.OnClickListener, RecyclerViewHorizontalListAdapter.viewHolderClick, HorizontalPicker.OnItemClicked, HorizontalPicker.OnItemSelected {
     override fun setLayout(): Int {
         return R.layout.activity_main
     }

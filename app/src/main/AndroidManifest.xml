@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".User_Health_Info"
             android:screenOrientation="portrait" />
         <activity
             android:name=".InfoPage"
@@ -32,6 +32,7 @@
         <activity
             android:name=".User_Registration"
             android:screenOrientation="portrait" />
+        <activity android:name=".UserVarify" />
     </application>
 
 </manifest>

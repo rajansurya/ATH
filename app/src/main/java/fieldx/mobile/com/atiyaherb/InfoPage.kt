@@ -3,11 +3,9 @@ package fieldx.mobile.com.atiyaherb
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
 import android.support.v4.view.ViewPager
 import android.view.View
 import com.view.adapter.ViewPagerAdapter
-import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.infopage_view.*
 import javax.inject.Inject
 import android.content.SharedPreferences
@@ -67,6 +65,6 @@ class InfoPage : BaseActivity() ,ViewPager.OnPageChangeListener{
 
     fun finishActivity(view: View) {
         InfoPage@this.finish()
-        startActivity(Intent(applicationContext,MainActivity::class.java))
+        startActivity(Intent(applicationContext, UserVarify::class.java))
     }
 }

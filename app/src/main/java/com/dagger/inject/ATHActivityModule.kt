@@ -13,7 +13,7 @@ abstract class ATHActivityModule {
     abstract fun bindBaseView(): BaseActivity
 
     @ContributesAndroidInjector(modules = arrayOf(LoginViewModule::class))
-    abstract fun bindMainView(): MainActivity
+    abstract fun bindMainView(): User_Health_Info
 
     @ContributesAndroidInjector
     abstract fun bindDiseasesView(): DiseasesView
@@ -27,6 +27,6 @@ abstract class ATHActivityModule {
     @ContributesAndroidInjector
     abstract fun bindsplash(): Splash
 
-    @ContributesAndroidInjector
-    abstract fun bindUserverify():User_verification_Module
+    @ContributesAndroidInjector(modules = arrayOf(User_verification_Module::class))
+    abstract fun bindUserverify():UserVarify
 }

@@ -1,6 +1,5 @@
 package fieldx.mobile.com.atiyaherb
 
-import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -24,7 +23,7 @@ class Splash : BaseActivity() {
             if (sharedPreferences.getBoolean("isfirstTime",true)) {
                 startActivity(Intent(applicationContext, InfoPage::class.java))
             }else{
-                startActivity(Intent(applicationContext, MainActivity::class.java))
+                startActivity(Intent(applicationContext, UserVarify::class.java))
             }
         }, 2000)
     }
