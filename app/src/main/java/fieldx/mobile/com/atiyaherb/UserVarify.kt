@@ -73,6 +73,9 @@ class UserVarify : BaseActivity(), View.OnClickListener, ViewCallbAck {
         } else if (etUserMobile.text.toString().length != 10) {
             showToast("Entered Mobile no is wrong.")
             return false
+        } else if (!checkActiveNetwork()) {
+            showToast(getString(R.string.nointernet))
+            return false
         }
         return true
     }

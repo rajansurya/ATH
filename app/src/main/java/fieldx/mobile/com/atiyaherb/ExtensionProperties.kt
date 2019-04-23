@@ -1,7 +1,10 @@
 package fieldx.mobile.com.atiyaherb
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.support.v4.app.Fragment
 import android.widget.TextView
 import android.widget.Toast
@@ -23,5 +26,11 @@ fun Activity.showToast(textst: String) {
 
 fun Activity.startActivityView(classview: Class<*>) {
     startActivity(Intent(applicationContext, classview))
+}
+
+fun Activity.checkActiveNetwork(): Boolean {
+    val connectivityManager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
+    return activeNetwork != null && activeNetwork.isConnected
 }
 

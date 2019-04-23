@@ -23,32 +23,32 @@ class User_Registration : BaseActivity(), View.OnClickListener {
     @Inject
     lateinit var registrationAPI: LoginViewModule
     lateinit var desies: ArrayList<String>
-
+    lateinit var registrationData: RegistrationData
     override fun setLayout(): Int {
         return R.layout.user_registration
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val on: UserRegistrationBinding = DataBindingUtil.setContentView<UserRegistrationBinding>(this, R.layout.user_registration)
 
         val intent = intent
-        val ob = RegistrationData(ObservableField<String>(""))
-        ob.age = intent.getStringExtra("age")
+        registrationData = RegistrationData(ObservableField<String>(""))
+        registrationData.age = intent.getStringExtra("age")
         desies = intent.getStringArrayListExtra("desies") as ArrayList<String>
-        ob.disease = desies
-        ob.gender = intent.getStringExtra("gender")
-        ob.weight = intent.getStringExtra("weight")
-        ob.height = intent.getStringExtra("height")
-        ob.name = intent.getStringExtra("user_name")
-        ob.mobile = intent.getStringExtra("mobile_number")
-        on.model = ob
+        registrationData.disease = desies
+        registrationData.gender = intent.getStringExtra("gender")
+        registrationData.weight = intent.getStringExtra("weight")
+        registrationData.height = intent.getStringExtra("height")
+        registrationData.name = intent.getStringExtra("user_name")
+        registrationData.mobile = intent.getStringExtra("mobile_number")
+        on.model = registrationData
         verify_now.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.verify_now -> {
-                showProgressBar()
                 verify()
             }
 
@@ -56,15 +56,21 @@ class User_Registration : BaseActivity(), View.OnClickListener {
     }
 
     fun verify() {
+        if (!checkActiveNetwork()) {
+            showToast(getString(R.string.nointernet))
+            return
+        }
         showProgressBar()
-        val registradsata = RegistrationData(ObservableField<String>(""))
-        registradsata.age = etUserAge.text.toString()
-        registradsata.gender = etUserAge.text.toString()
-        registradsata.weight = etUserAge.text.toString()
-        registradsata.height = etUserAge.text.toString()
-        registradsata.disease = desies
+//        val registradsata = RegistrationData(ObservableField<String>(""))
+//        registradsata.age = etUserAge.text.toString()
+//        registradsata.gender = etUsergender.text.toString()
+//        registradsata.weight = etUserWeight.text.toString()
+//        registradsata.height = etUserHeight.text.toString()
+//        registradsata.name = etUserName.text.toString()
+//        registradsata.mobile = etUserMobile.text.toString()
+//        registradsata.disease = desies
 
-        val call: Call<Restration_response> = registrationAPI.returnBackToView(registradsata)
+        val call: Call<Restration_response> = registrationAPI.returnBackToView(registrationData)
         call.enqueue(object : Callback<Restration_response> {
             override fun onFailure(call: Call<Restration_response>?, t: Throwable?) {
                 Log.i("ResonFailure FFFFFFFFF ", t?.stackTrace.toString());
@@ -86,6 +92,7 @@ class User_Registration : BaseActivity(), View.OnClickListener {
             }
 
         })
+
     }
 
 
