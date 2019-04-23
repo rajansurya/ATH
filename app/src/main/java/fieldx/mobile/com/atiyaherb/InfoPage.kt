@@ -38,7 +38,7 @@ class InfoPage : BaseActivity() ,ViewPager.OnPageChangeListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        sharedPreferences.edit().putBoolean("isfirstTime",false).apply()
+        sharedPreferences.edit().putString("stepCompleted","0").apply()
 
         var listfrg = ArrayList<Fragment>()
         listfrg.add(InfoPageFragment.newInstance(0))

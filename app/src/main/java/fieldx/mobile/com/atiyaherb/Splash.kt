@@ -1,6 +1,5 @@
 package fieldx.mobile.com.atiyaherb
 
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
@@ -15,15 +14,22 @@ class Splash : BaseActivity() {
     }
 
     @Inject
-    lateinit var sharedPreferences:SharedPreferences
+    lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Handler().postDelayed(Runnable {
             Splash@ this.finish()
-            if (sharedPreferences.getBoolean("isfirstTime",true)) {
-                startActivity(Intent(applicationContext, InfoPage::class.java))
-            }else{
-                startActivity(Intent(applicationContext, UserVarify::class.java))
+            if (sharedPreferences.getString("stepCompleted", "0").equals("0")) {
+                startActivityView(InfoPage::class.java)
+            } else if (sharedPreferences.getString("stepCompleted", "0").equals("1")) {
+                startActivityView(UserVarify::class.java)
+            }
+            /*else if (sharedPreferences.getString("stepCompleted", "").equals("2")) {
+                startActivityView(User_Health_Info::class.java)
+            } */
+            else if (sharedPreferences.getString("stepCompleted", "0").equals("3")) {
+                startActivityView(HomeActivity_View::class.java)
             }
         }, 2000)
     }

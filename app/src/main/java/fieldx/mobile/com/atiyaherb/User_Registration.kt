@@ -1,5 +1,6 @@
 package fieldx.mobile.com.atiyaherb
 
+import android.content.SharedPreferences
 import android.databinding.DataBindingUtil
 import android.databinding.ObservableField
 import android.os.Bundle
@@ -19,6 +20,8 @@ import javax.inject.Inject
 
 class User_Registration : BaseActivity(), View.OnClickListener {
 
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     @Inject
     lateinit var registrationAPI: LoginViewModule
@@ -84,6 +87,7 @@ class User_Registration : BaseActivity(), View.OnClickListener {
                     Log.i(" FFFFFFFFF KODARE  ", response.body()?.status_api)
                     showToast(response.body()?.status_msg.toString())
                     hideProgressBar()
+                    sharedPreferences.edit().putString("stepCompleted","3").apply()
                 } else {
                     hideProgressBar()
                     Log.i(" FFFFFFFFF KODARE  ", response.errorBody().toString())

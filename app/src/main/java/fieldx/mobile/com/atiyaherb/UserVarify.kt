@@ -1,6 +1,7 @@
 package fieldx.mobile.com.atiyaherb
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
@@ -16,18 +17,20 @@ import javax.inject.Inject
 class UserVarify : BaseActivity(), View.OnClickListener, ViewCallbAck {
 
     override fun otpResponse(otp: String) {
+        UserVarify@this.finish()
         val intent = Intent(applicationContext, User_Health_Info::class.java)
         intent.putExtra("user_name", etUserName.text.toString())
         intent.putExtra("mobile_number", etUserMobile.text.toString())
         startActivity(intent)
-        // startActivityView(User_Health_Info::class.java)
-
     }
 
     lateinit var store_otp: String
 
     @Inject
     lateinit var user_verification_Module: User_verification_Module
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     override fun onClick(p0: View?) {
         when (p0?.id) {
@@ -86,6 +89,7 @@ class UserVarify : BaseActivity(), View.OnClickListener, ViewCallbAck {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        sharedPreferences.edit().putString("stepCompleted","1").apply()
         verify_now.setOnClickListener(this)
     }
 

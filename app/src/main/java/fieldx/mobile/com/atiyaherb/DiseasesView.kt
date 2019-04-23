@@ -26,6 +26,7 @@ class DiseasesView:BaseActivity() ,View.OnClickListener{
     override fun onClick(p0: View?) {
         when(p0?.id){
             R.id.submit->{
+                DiseasesView@this.finish()
                 val intents = Intent(applicationContext, User_Registration::class.java)
                 val intent=intent
                 intents.putExtra("gender", intent.getStringExtra("gender"))
