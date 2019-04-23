@@ -15,13 +15,12 @@ fun Fragment.close() = fragmentManager?.popBackStack()
 
 fun Activity.showToast(textst: String) {
     val getLayoutInflater = layoutInflater.inflate(R.layout.toast, null)
-    val text = getLayoutInflater.findViewById(R.id.text) as TextView
+    val text = getLayoutInflater.findViewById<TextView>(R.id.text) as TextView
     text.text = textst
     val toast = Toast(this)
     toast.duration = Toast.LENGTH_LONG
     toast.view = getLayoutInflater
     toast.show()
-    // Toast.makeText(this, text, Toast.LENGTH_LONG).show()
 }
 
 fun Activity.startActivityView(classview: Class<*>) {
