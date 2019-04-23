@@ -34,11 +34,12 @@
                 android:id="@+id/etUserName"
                 style="@style/edit_text_style"
                 android:hint="@string/name"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColor="@color/white" />
 
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <!--<android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/regis_edit_margin"
@@ -50,7 +51,7 @@
                 android:hint="@string/email"
                 android:inputType="text" />
 
-        </android.support.design.widget.TextInputLayout>
+        </android.support.design.widget.TextInputLayout>-->
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -62,7 +63,8 @@
                 android:id="@+id/etUserMobile"
                 style="@style/edit_text_style"
                 android:hint="@string/mobile"
-                android:inputType="text" />
+                android:inputType="number"
+                android:textColor="@color/white" />
 
         </android.support.design.widget.TextInputLayout>
 

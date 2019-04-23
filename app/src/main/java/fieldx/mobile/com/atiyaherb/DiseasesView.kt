@@ -32,6 +32,8 @@ class DiseasesView:BaseActivity() ,View.OnClickListener{
                 intents.putExtra("age", intent.getStringExtra("age"))
                 intents.putExtra("weight", intent.getStringExtra("weight"))
                 intents.putExtra("height", intent.getStringExtra("height"))
+                intents.putExtra("user_name", intent.getStringExtra("user_name"))
+                intents.putExtra("mobile_number", intent.getStringExtra("mobile_number"))
                 val st:ArrayList<String> = ArrayList()
                 for ( sta:String in storepositio.keys){
                     st.add(storepositio.get(sta)!!)
@@ -46,12 +48,13 @@ class DiseasesView:BaseActivity() ,View.OnClickListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var intent=intent
-        var age=intent.getStringExtra("age")
-        var gender=intent.getStringExtra("gender")
-        var weight=intent.getStringExtra("weight")
-        var height=intent.getStringExtra("height")
-        println("weight  "+weight)
+//        var intent=intent
+//        var age=intent.getStringExtra("age")
+//        var gender=intent.getStringExtra("gender")
+//        var weight=intent.getStringExtra("weight")
+//        var height=intent.getStringExtra("height")
+
+        //println("weight  "+weight)
         var dieas=ArrayList<String>()
         dieas.add("Ashtama")
         dieas.add("Hypertension")

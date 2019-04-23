@@ -1,6 +1,5 @@
 package fieldx.mobile.com.atiyaherb
 
-import android.app.AlertDialog
 import android.databinding.DataBindingUtil
 import android.databinding.ObservableField
 import android.os.Bundle
@@ -9,7 +8,6 @@ import android.view.View
 import com.activity.module.LoginViewModule
 import com.data.model.RegistrationData
 import com.data.model.Restration_response
-import com.view.callback.ViewCallbAck
 import fieldx.mobile.com.atiyaherb.databinding.UserRegistrationBinding
 import kotlinx.android.synthetic.main.user_registration.*
 import retrofit2.Call
@@ -19,24 +17,16 @@ import java.util.*
 import javax.inject.Inject
 
 
-class User_Registration : BaseActivity(), View.OnClickListener, ViewCallbAck {
-    override fun setLayout(): Int {
-        return R.layout.user_registration
-    }
+class User_Registration : BaseActivity(), View.OnClickListener {
 
-    lateinit var store_otp: String
-
-    override fun otpResponse(otp: String) {
-        println("store_otp " + store_otp + "  otp " + otp)
-        verify()
-
-
-    }
 
     @Inject
     lateinit var registrationAPI: LoginViewModule
     lateinit var desies: ArrayList<String>
 
+    override fun setLayout(): Int {
+        return R.layout.user_registration
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val on: UserRegistrationBinding = DataBindingUtil.setContentView<UserRegistrationBinding>(this, R.layout.user_registration)
@@ -49,7 +39,8 @@ class User_Registration : BaseActivity(), View.OnClickListener, ViewCallbAck {
         ob.gender = intent.getStringExtra("gender")
         ob.weight = intent.getStringExtra("weight")
         ob.height = intent.getStringExtra("height")
-
+        ob.name = intent.getStringExtra("user_name")
+        ob.mobile = intent.getStringExtra("mobile_number")
         on.model = ob
         verify_now.setOnClickListener(this)
     }
@@ -58,32 +49,7 @@ class User_Registration : BaseActivity(), View.OnClickListener, ViewCallbAck {
         when (p0?.id) {
             R.id.verify_now -> {
                 showProgressBar()
-
-//                store_otp = getRandomNumberString()
-                val msg = "Use Code " + store_otp + " to verify your mobile on HSK."
-                val otpur = API_URL_FILE.OTP_API + "&to=" + etUserMobile.text.toString() + "&text=" + msg
-                //   val otpurl: String = "http://www.myvaluefirst.com/smpp/sendsms?username=" + "unayurhtpotp" + "&password=" + "unayr981" + "&to=9958778861&from=AHHRBS &text=" + msg + "&dlr-mask=19&dlr-url"
-                val call = registrationAPI.sendOTPToMobile(otpur)
-
-                call.enqueue(object : Callback<Any> {
-                    override fun onFailure(call: Call<Any>?, t: Throwable?) {
-                        Log.i("OTP XXX ", t?.message)
-                        hideProgressBar()
-
-                    }
-
-                    override fun onResponse(call: Call<Any>?, response: Response<Any>) {
-                        Log.i("OTP has been  ", response.body()?.toString())
-                        if (response.isSuccessful) {
-                            hideProgressBar()
-                            showToast("OTP has been send to Given mobile no.")
-                            val dalog: OTPAlertDialogFragment = OTPAlertDialogFragment.newInstanse("Enter OTP", this@User_Registration, this@User_Registration, store_otp)
-                            dalog.show(supportFragmentManager, "dialog")
-                        }
-                    }
-
-                })
-
+                verify()
             }
 
         }
@@ -121,8 +87,6 @@ class User_Registration : BaseActivity(), View.OnClickListener, ViewCallbAck {
 
         })
     }
-
-
 
 
 }

@@ -31,4 +31,5 @@
     <string name="mobile">Mobile</string>
     <string name="email">Email</string>
     <string name="otp_msg">You\'ll receive an SMS to verify your indentity, but we will never spam.</string>
+    <string name="registration">Sign UP</string>
 </resources>

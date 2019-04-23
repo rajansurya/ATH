@@ -4,21 +4,16 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import android.text.TextUtils
 import android.view.Gravity
 import android.view.View
-import android.widget.AdapterView
-import android.widget.HorizontalScrollView
 import android.widget.TextView
-import com.activity.module.LoginViewModule
 import com.data.model.InfoData
 import com.view.adapter.RecyclerViewHorizontalListAdapter
 import com.wefika.horizontalpicker.HorizontalPicker
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.age_view.*
 import kotlinx.android.synthetic.main.gender_view.*
-import javax.inject.Inject
 
 class User_Health_Info : BaseActivity(), View.OnClickListener, RecyclerViewHorizontalListAdapter.viewHolderClick, HorizontalPicker.OnItemClicked, HorizontalPicker.OnItemSelected {
     override fun setLayout(): Int {
@@ -26,22 +21,16 @@ class User_Health_Info : BaseActivity(), View.OnClickListener, RecyclerViewHoriz
     }
 
     override fun onItemSelected(index: Int) {
-        when (selectedoption) {
-            "A" -> {
-                ageposition = index
-            }
-            "W" -> {
-                weightposition = index
-            }
-            "H" -> {
-                heightposition = index
-            }
-
-        }
+        selectedIndex(index)
         println(index)
     }
 
     override fun onItemClicked(index: Int) {
+        selectedIndex(index)
+        println(index)
+    }
+
+    fun selectedIndex(index: Int) {
         when (selectedoption) {
             "A" -> {
                 ageposition = index
@@ -54,22 +43,20 @@ class User_Health_Info : BaseActivity(), View.OnClickListener, RecyclerViewHoriz
             }
 
         }
-        println(index)
     }
 
-
     var textviewClicked: TextView? = null
-    @Inject
-    lateinit var loginViewModule: LoginViewModule
+    //    @Inject
+//    lateinit var loginViewModule: LoginViewModule
     var agelist = ArrayList<String>(60)
     var heightlist = ArrayList<String>(10)
     var weightlist = ArrayList<String>(150)
     //lateinit var recycleadapter: RecyclerViewHorizontalListAdapter
     var gendervalue: String = ""
     var selectedoption: String = ""
-    var ageposition: Int = 0
-    var weightposition: Int = 0
-    var heightposition: Int = 0
+    var ageposition: Int = -1
+    var weightposition: Int = -1
+    var heightposition: Int = -1
     //lateinit var linearlayout: LinearLayoutManager
 
     override fun onClick(p0: View) {
@@ -93,10 +80,10 @@ class User_Health_Info : BaseActivity(), View.OnClickListener, RecyclerViewHoriz
                 heightlist.add(i.toString() + "'" + j.toString() + "''")
             }
         }
-     //   heightlist.reverse()
+        //   heightlist.reverse()
         for (i in 1..150)
             weightlist.add(i.toString())
-       // weightlist.reverse()
+        // weightlist.reverse()
     }
 
     fun craeteView() {
@@ -110,8 +97,8 @@ class User_Health_Info : BaseActivity(), View.OnClickListener, RecyclerViewHoriz
             femaleclickck.isChecked = true
             gendervalue = "female"
         }
-       // recycleadapter = RecyclerViewHorizontalListAdapter(this, this)
-       // agelist.reverse()
+        // recycleadapter = RecyclerViewHorizontalListAdapter(this, this)
+        // agelist.reverse()
         //recycleadapter.update(agelist)
         //linearlayout = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true)
         //idRecyclerViewHorizontalList.layoutManager = linearlayout
@@ -179,12 +166,10 @@ class User_Health_Info : BaseActivity(), View.OnClickListener, RecyclerViewHoriz
                 age_include.visibility = View.VISIBLE
                 gender_include.visibility = View.GONE
                 textvalue.text = resources.getString(R.string.age_val)
-                // recycleadapter.update(agelist)
                 picker.values = null
                 picker.values = agelist.toTypedArray()
 
                 selectedoption = "A"
-                //  idRecyclerViewHorizontalList.layoutManager?.scrollToPosition(15)
             }
             "2" -> {
                 age_include.visibility = View.VISIBLE
@@ -193,8 +178,6 @@ class User_Health_Info : BaseActivity(), View.OnClickListener, RecyclerViewHoriz
                 picker.values = null
                 picker.values = weightlist.toTypedArray()
                 selectedoption = "W"
-                // recycleadapter.update(heightlist)
-                //idRecyclerViewHorizontalList.layoutManager?.scrollToPosition(30)
             }
             "3" -> {
                 age_include.visibility = View.VISIBLE
@@ -203,25 +186,44 @@ class User_Health_Info : BaseActivity(), View.OnClickListener, RecyclerViewHoriz
                 picker.values = null
                 picker.values = heightlist.toTypedArray()
                 selectedoption = "H"
-                // recycleadapter.update(weightlist)
-                // idRecyclerViewHorizontalList.layoutManager?.scrollToPosition(75)
             }
 
         }
     }
 
     fun finishActivity(view: View) {
-        MainActivity@ this.finish()
-        val intent = Intent(applicationContext, DiseasesView::class.java)
-        intent.putExtra("gender", gendervalue)
-        intent.putExtra("age", agelist.get(ageposition))
-        intent.putExtra("weight", weightlist.get(weightposition))
-        intent.putExtra("height", heightlist.get(weightposition))
-        println("gendervalue  "+gendervalue)
-        println("gendervalue  "+agelist.get(ageposition))
-        println("gendervalue  "+weightlist.get(weightposition))
-        println("gendervalue  "+heightlist.get(heightposition))
+        if (validation()) {
+            MainActivity@ this.finish()
+            val intentv = Intent(applicationContext, DiseasesView::class.java)
+            intentv.putExtra("gender", gendervalue)
+            intentv.putExtra("age", agelist.get(ageposition))
+            intentv.putExtra("weight", weightlist.get(weightposition))
+            intentv.putExtra("height", heightlist.get(heightposition))
+            intentv.putExtra("user_name", intent.getStringExtra("user_name"))
+                    intentv.putExtra("mobile_number", intent.getStringExtra("mobile_number"))
+//        println("gendervalue  "+gendervalue)
+//        println("gendervalue  "+agelist.get(ageposition))
+//        println("gendervalue  "+weightlist.get(weightposition))
+//        println("gendervalue  "+heightlist.get(heightposition))
 
-        startActivity(intent)
+            startActivity(intentv)
+        }
+    }
+
+    fun validation(): Boolean {
+        if (TextUtils.isEmpty(gendervalue)) {
+            showToast("Please select your Gender.")
+            return false
+        } else if (ageposition == -1) {
+            showToast("Please select your Age.")
+            return false
+        } else if (weightposition == -1) {
+            showToast("Please select your Weight.")
+            return false
+        } else if (heightposition == -1) {
+            showToast("Please select your Height.")
+            return false
+        }
+        return true
     }
 }

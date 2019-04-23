@@ -13,17 +13,16 @@ class RegistrationData(var stloc: ObservableField<String>) : BaseObservable() {
 
     //var name: String = ""
     @SerializedName("name")
-    var name: ObservableField<String> = stloc
+    var name: String = ""
+   /* var name: ObservableField<String> = stloc
         @Bindable
         set(value) {
             stloc = value
             // notifyPropertyChanged(BR.name)
-        }
-    val test: String
-        get() = gender
+        }*/
 
     @SerializedName("mobile")
-    var mobile: String = "9958778861"
+    var mobile: String = ""
     @SerializedName("password")
     lateinit var password: String
     @SerializedName("gender")

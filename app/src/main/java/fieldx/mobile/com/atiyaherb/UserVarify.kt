@@ -1,7 +1,8 @@
 package fieldx.mobile.com.atiyaherb
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.text.TextUtils
 import android.view.View
 import com.activity.module.User_verification_Module
 import com.view.callback.ViewCallbAck
@@ -15,7 +16,12 @@ import javax.inject.Inject
 class UserVarify : BaseActivity(), View.OnClickListener, ViewCallbAck {
 
     override fun otpResponse(otp: String) {
-        startActivityView(User_Health_Info::class.java)
+        val intent = Intent(applicationContext, User_Health_Info::class.java)
+        intent.putExtra("user_name", etUserName.text.toString())
+        intent.putExtra("mobile_number", etUserMobile.text.toString())
+        startActivity(intent)
+        // startActivityView(User_Health_Info::class.java)
+
     }
 
     lateinit var store_otp: String
@@ -26,23 +32,24 @@ class UserVarify : BaseActivity(), View.OnClickListener, ViewCallbAck {
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.verify_now -> {
+                if (!validation())
+                    return
                 showProgressBar()
 
                 store_otp = getRandomNumberString()
                 val msg = "Use Code " + store_otp + " to verify your mobile on HSK."
                 val otpur = API_URL_FILE.OTP_API + "&to=" + etUserMobile.text.toString() + "&text=" + msg
-                //   val otpurl: String = "http://www.myvaluefirst.com/smpp/sendsms?username=" + "unayurhtpotp" + "&password=" + "unayr981" + "&to=9958778861&from=AHHRBS &text=" + msg + "&dlr-mask=19&dlr-url"
                 val call = user_verification_Module.sendOTPToMobile(otpur)
 
                 call.enqueue(object : Callback<Any> {
                     override fun onFailure(call: Call<Any>?, t: Throwable?) {
-                        Log.i("OTP XXX ", t?.message)
+                        //Log.i("OTP XXX ", t?.message)
                         hideProgressBar()
 
                     }
 
                     override fun onResponse(call: Call<Any>?, response: Response<Any>) {
-                        Log.i("OTP has been  ", response.body()?.toString())
+                        //  Log.i("OTP has been  ", response.body()?.toString())
                         if (response.isSuccessful) {
                             hideProgressBar()
                             showToast("OTP has been send to Given mobile no.")
@@ -54,6 +61,20 @@ class UserVarify : BaseActivity(), View.OnClickListener, ViewCallbAck {
                 })
             }
         }
+    }
+
+    fun validation(): Boolean {
+        if (TextUtils.isEmpty(etUserName.text.toString())) {
+            showToast("Please enter your Name.")
+            return false
+        } else if (TextUtils.isEmpty(etUserMobile.text.toString())) {
+            showToast("Please enter your Mobile no.")
+            return false
+        } else if (etUserMobile.text.toString().length != 10) {
+            showToast("Entered Mobile no is wrong.")
+            return false
+        }
+        return true
     }
 
     override fun setLayout(): Int {
